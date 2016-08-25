@@ -20,8 +20,11 @@ public class DeckOfCards {
 		
 		//populate deck with Card objects
 		for ( int count = 0; count < deck.length; count++ )
-			deck[ count ] =
-			new Card( faces[ count % 13], suits[ count / 13]);
+		{
+			for(int suitsCount = 0; suitsCount < 4; suitsCount++) //Makes clean distribution of Suits
+				deck[ count ] =
+				new Card( faces[ count % 13], suits[ suitsCount % 4]); 
+		}
 		
 		}//end DeckOfCards
 	
@@ -49,7 +52,7 @@ public class DeckOfCards {
 		
 		//determine whether Cards remain to be dealt
 		if ( currentCard < deck.length)
-			return deck[ currentCard++ ];//return current card in array
+			return deck[ currentCard++ ];//return next card in array
 		else
 			return null;//return null to indicate that all Cards were dealt 
 	}//end method dealCard
